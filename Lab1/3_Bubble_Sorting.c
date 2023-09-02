@@ -11,7 +11,7 @@ int main()
     int size, arr[500000], num;
     printf("\nEnter size of array\n");
     scanf("%d",&size);
-    printf("\nEnter %d numbers\n",size);
+    printf("%d numbers\n",size);
     for (int i = 0; i < size; i++)
     {
         num = (rand()%10000);
@@ -26,7 +26,6 @@ int main()
         printf("%d  ",arr[i]);
     }
     printf("\n\n");
-
     time=((double)(end-start)*10000) / CLOCKS_PER_SEC;
     printf("Time=%lf micro", time);
 }
