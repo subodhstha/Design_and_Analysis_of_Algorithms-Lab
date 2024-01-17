@@ -14,7 +14,7 @@ int main()
     printf("%d numbers\n",n);
     for (int i = 0; i < n; i++)
     {
-        num = (rand()%10000);
+        num = (rand()%1000000);
         arr[i] = num;
     }
     printf("Enter the key\n");

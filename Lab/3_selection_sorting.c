@@ -1,23 +1,26 @@
+// Write a program to implement the Selection sort algorithm.
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-void quickSort(int *arr,int f,int l);
+void selectionSort(int *arr,int *size);
+
 int main()
 {
     clock_t start, end;
     double time;
-    printf("-----QUICK SORT--------\n");
+    printf("-----SELECTION SORT--------\n");
     int size, arr[500000], num;
     printf("\nEnter size of array\n");
     scanf("%d",&size);
-    printf("%d numbers\n",size);
+    printf("\n%d numbers\n",size);
     for (int i = 0; i < size; i++)
     {
         num = (rand()%10000);
         arr[i] = num;
     }
     start = clock();
-    quickSort(arr,0,(size-1));
+    selectionSort(arr,&size);
     end = clock();
     printf("\nSORTED ARRAY\n");
     for (int i = 0; i < size; i++)
@@ -25,7 +28,7 @@ int main()
         printf("%d  ",arr[i]);
     }
     printf("\n\n");
-    time=((double)(end-start)*10000) / CLOCKS_PER_SEC;
+    time=((double)(end-start)*1000000) / CLOCKS_PER_SEC;
     printf("Time=%lf micro", time);
 }
 
@@ -37,28 +40,20 @@ void swap(int *first,int *second)
     *second=temp;
 }
 
-int partition(int *arr,int l, int r)
+void selectionSort(int *arr,int *size)
 {
-    int pivot = arr[r];
-    int i = l-1;
-    for(int j=l ; j<=(r-1);j++)
+    int temp,counter=0;
+    while (counter<*size)
     {
-        if(arr[j]<pivot)
+        for (int i = counter; i < *size; i++)
         {
-            i++;
-            swap(&arr[i],&arr[j]);
+            if(arr[counter]>arr[i])
+            {
+                temp=arr[counter];
+                arr[counter]=arr[i];
+                arr[i]=temp;
+            }
         }
-    }
-    swap(&arr[i+1],&arr[r]);
-    return (i+1);
-}
-
-void quickSort(int *arr,int l,int r)
-{
-    if(l<r)
-    {
-        int pi = partition(arr,l,r);
-        quickSort(arr,l,(pi-1));
-        quickSort(arr,(pi+1),r);
+        counter++;
     }
 }

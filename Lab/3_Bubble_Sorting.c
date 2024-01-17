@@ -26,7 +26,7 @@ int main()
         printf("%d  ",arr[i]);
     }
     printf("\n\n");
-    time=((double)(end-start)*10000) / CLOCKS_PER_SEC;
+    time=((double)(end-start)*1000000) / CLOCKS_PER_SEC;
     printf("Time=%lf micro", time);
 }
 void swap(int *first,int *second)
